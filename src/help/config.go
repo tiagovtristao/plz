@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 var urlRegex = regexp.MustCompile("https?://[^ ]+[^.]")

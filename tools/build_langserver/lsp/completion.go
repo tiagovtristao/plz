@@ -8,8 +8,8 @@ import (
 
 	"github.com/sourcegraph/go-lsp"
 
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/parse/asp"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/parse/asp"
 )
 
 func (h *Handler) completion(params *lsp.CompletionParams) (*lsp.CompletionList, error) {

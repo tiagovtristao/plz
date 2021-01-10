@@ -6,7 +6,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/thought-machine/please/src/fs"
+	"github.com/tiagovtristao/plz/src/fs"
 )
 
 // A BuildInput represents some kind of input to a build rule. They can be implemented

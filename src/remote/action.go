@@ -18,9 +18,9 @@ import (
 	pb "github.com/bazelbuild/remote-apis/build/bazel/remote/execution/v2"
 	"github.com/golang/protobuf/ptypes"
 
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/fs"
-	"github.com/thought-machine/please/src/process"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/fs"
+	"github.com/tiagovtristao/plz/src/process"
 )
 
 // uploadAction uploads a build action for a target and returns its digest.

@@ -3,7 +3,7 @@ package query
 import (
 	"fmt"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 // SomePath finds and returns a path between two targets, or between one and a set of targets.

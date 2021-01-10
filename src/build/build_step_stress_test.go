@@ -11,8 +11,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/op/go-logging.v1"
 
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/plz"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/plz"
 )
 
 var log = logging.MustGetLogger("build_test")

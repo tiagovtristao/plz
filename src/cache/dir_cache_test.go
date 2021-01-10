@@ -10,7 +10,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 var hash = []byte("12345678901234567890")

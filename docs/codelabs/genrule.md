@@ -5,7 +5,7 @@ categories: intermediate
 tags: medium
 status: Published
 authors: Jon Poole
-Feedback Link: https://github.com/thought-machine/please
+Feedback Link: https://github.com/tiagovtristao/plz
 
 # Custom build rules with `genrule()`
 ## Overview
@@ -28,7 +28,7 @@ In doing so you'll:
 ### What if I get stuck?
 
 The final result of running through this codelab can be found
-[here](https://github.com/thought-machine/please-codelabs/tree/main/custom_rules) for reference. If you really get stuck
+[here](https://github.com/tiagovtristao/plz-codelabs/tree/main/custom_rules) for reference. If you really get stuck
 you can find us on [gitter](https://gitter.im/please-build/Lobby)!
 
 ## genrule()

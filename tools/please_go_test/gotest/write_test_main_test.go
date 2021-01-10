@@ -121,12 +121,12 @@ func TestExtraImportPaths(t *testing.T) {
 }
 
 func TestExtraImportPathsWithImportPath(t *testing.T) {
-	assert.Equal(t, extraImportPaths("core", "src/core", "github.com/thought-machine/please", []CoverVar{
+	assert.Equal(t, extraImportPaths("core", "src/core", "github.com/tiagovtristao/plz", []CoverVar{
 		{ImportPath: "src/core"},
 		{ImportPath: "output"},
 	}), []string{
-		"core \"github.com/thought-machine/please/src/core\"",
-		"_cover0 \"github.com/thought-machine/please/src/core\"",
-		"_cover1 \"github.com/thought-machine/please/output\"",
+		"core \"github.com/tiagovtristao/plz/src/core\"",
+		"_cover0 \"github.com/tiagovtristao/plz/src/core\"",
+		"_cover1 \"github.com/tiagovtristao/plz/output\"",
 	})
 }

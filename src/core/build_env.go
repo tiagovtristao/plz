@@ -8,8 +8,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/thought-machine/please/src/fs"
-	"github.com/thought-machine/please/src/scm"
+	"github.com/tiagovtristao/plz/src/fs"
+	"github.com/tiagovtristao/plz/src/scm"
 )
 
 // A BuildEnv is a representation of the build environment that also knows how to log itself.

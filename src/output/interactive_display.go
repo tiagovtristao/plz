@@ -10,8 +10,8 @@ import (
 
 	"github.com/dustin/go-humanize"
 
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 // We only set the terminal title for terminals that at least claim to be xterm

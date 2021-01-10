@@ -5,7 +5,7 @@ categories: intermediate
 tags: medium
 status: Published 
 authors: Jon Poole
-Feedback Link: https://github.com/thought-machine/please
+Feedback Link: https://github.com/tiagovtristao/plz
 
 # Tips and tricks - plz query 
 
@@ -28,7 +28,7 @@ Duration: 2
 For this codelab we will be using the Please codelabs repo:
 
 ```
-$ git clone https://github.com/thought-machine/please-codelabs
+$ git clone https://github.com/tiagovtristao/plz-codelabs
 Cloning into 'please-examples'...
 remote: Enumerating objects: 228, done.
 remote: Total 228 (delta 0), reused 0 (delta 0), pack-reused 228

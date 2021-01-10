@@ -12,9 +12,9 @@ import (
 
 	"github.com/manifoldco/promptui"
 
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/fs"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/fs"
 )
 
 // A few sneaky globals for when we don't have a scope handy

@@ -5,7 +5,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/thought-machine/please/test/stamp/lib"
+	"github.com/tiagovtristao/plz/test/stamp/lib"
 )
 
 func main() {

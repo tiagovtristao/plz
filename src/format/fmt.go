@@ -12,9 +12,9 @@ import (
 	"github.com/bazelbuild/buildtools/build"
 	"gopkg.in/op/go-logging.v1"
 
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/fs"
-	"github.com/thought-machine/please/src/utils"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/fs"
+	"github.com/tiagovtristao/plz/src/utils"
 )
 
 var log = logging.MustGetLogger("format")

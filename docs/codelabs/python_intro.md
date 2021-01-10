@@ -5,7 +5,7 @@ categories: beginner
 tags: medium
 status: Published
 authors: Jon Poole
-Feedback Link: https://github.com/thought-machine/please
+Feedback Link: https://github.com/tiagovtristao/plz
 
 # Getting started with Python
 ## Overview
@@ -25,7 +25,7 @@ Duration: 4
 ### what if I get stuck?
 
 The final result of running through this codelab can be found
-[here](https://github.com/thought-machine/please-codelabs/tree/main/getting_started_python) for reference. If you really
+[here](https://github.com/tiagovtristao/plz-codelabs/tree/main/getting_started_python) for reference. If you really
 get stuck you can find us on [gitter](https://gitter.im/please-build/Lobby)!
 
 ## Initialising your project

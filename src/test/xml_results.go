@@ -13,7 +13,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 	"io"
 )
 

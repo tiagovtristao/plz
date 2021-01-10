@@ -506,10 +506,10 @@ func TestAllURLs(t *testing.T) {
 	config := DefaultConfiguration()
 	target := makeTarget1("//src/core:remote1", "")
 	target.IsRemoteFile = true
-	target.AddSource(URLLabel("https://github.com/thought-machine/please"))
+	target.AddSource(URLLabel("https://github.com/tiagovtristao/plz"))
 	target.AddSource(URLLabel("https://github.com/thought-machine/pleasings"))
 	assert.Equal(t, []string{
-		"https://github.com/thought-machine/please",
+		"https://github.com/tiagovtristao/plz",
 		"https://github.com/thought-machine/pleasings",
 	}, target.AllURLs(config))
 }

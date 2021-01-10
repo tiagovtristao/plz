@@ -15,30 +15,30 @@ import (
 	"github.com/thought-machine/go-flags"
 	"gopkg.in/op/go-logging.v1"
 
-	"github.com/thought-machine/please/src/assets"
-	"github.com/thought-machine/please/src/build"
-	"github.com/thought-machine/please/src/cache"
-	"github.com/thought-machine/please/src/clean"
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/export"
-	"github.com/thought-machine/please/src/format"
-	"github.com/thought-machine/please/src/fs"
-	"github.com/thought-machine/please/src/gc"
-	"github.com/thought-machine/please/src/hashes"
-	"github.com/thought-machine/please/src/help"
-	"github.com/thought-machine/please/src/output"
-	"github.com/thought-machine/please/src/plz"
-	"github.com/thought-machine/please/src/plzinit"
-	"github.com/thought-machine/please/src/query"
-	"github.com/thought-machine/please/src/run"
-	"github.com/thought-machine/please/src/scm"
-	"github.com/thought-machine/please/src/test"
-	"github.com/thought-machine/please/src/tool"
-	"github.com/thought-machine/please/src/update"
-	"github.com/thought-machine/please/src/utils"
-	"github.com/thought-machine/please/src/watch"
-	"github.com/thought-machine/please/src/worker"
+	"github.com/tiagovtristao/plz/src/assets"
+	"github.com/tiagovtristao/plz/src/build"
+	"github.com/tiagovtristao/plz/src/cache"
+	"github.com/tiagovtristao/plz/src/clean"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/export"
+	"github.com/tiagovtristao/plz/src/format"
+	"github.com/tiagovtristao/plz/src/fs"
+	"github.com/tiagovtristao/plz/src/gc"
+	"github.com/tiagovtristao/plz/src/hashes"
+	"github.com/tiagovtristao/plz/src/help"
+	"github.com/tiagovtristao/plz/src/output"
+	"github.com/tiagovtristao/plz/src/plz"
+	"github.com/tiagovtristao/plz/src/plzinit"
+	"github.com/tiagovtristao/plz/src/query"
+	"github.com/tiagovtristao/plz/src/run"
+	"github.com/tiagovtristao/plz/src/scm"
+	"github.com/tiagovtristao/plz/src/test"
+	"github.com/tiagovtristao/plz/src/tool"
+	"github.com/tiagovtristao/plz/src/update"
+	"github.com/tiagovtristao/plz/src/utils"
+	"github.com/tiagovtristao/plz/src/watch"
+	"github.com/tiagovtristao/plz/src/worker"
 )
 
 var log = logging.MustGetLogger("plz")
@@ -759,7 +759,7 @@ func prettyOutput(interactiveOutput bool, plainOutput bool, verbosity cli.Verbos
 func newCache(state *core.BuildState) core.Cache {
 	if opts.FeatureFlags.NoCache {
 		log.Warning("--nocache is deprecated, use plz build --rebuild or plz test --rerun instead")
-		log.Warning("See https://github.com/thought-machine/please/issues/1212 for more information")
+		log.Warning("See https://github.com/tiagovtristao/plz/issues/1212 for more information")
 		return nil
 	}
 	return cache.NewCache(state)

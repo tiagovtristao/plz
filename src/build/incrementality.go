@@ -23,8 +23,8 @@ import (
 	"path"
 	"sort"
 
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/fs"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/fs"
 )
 
 const hashLength = sha1.Size

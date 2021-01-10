@@ -11,9 +11,9 @@ import (
 
 	"gopkg.in/op/go-logging.v1"
 
-	"github.com/thought-machine/please/rules"
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/parse/asp"
+	"github.com/tiagovtristao/plz/rules"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/parse/asp"
 )
 
 var log = logging.MustGetLogger("help")

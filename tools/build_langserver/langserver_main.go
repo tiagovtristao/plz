@@ -9,8 +9,8 @@ import (
 	"github.com/sourcegraph/jsonrpc2"
 	"gopkg.in/op/go-logging.v1"
 
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/tools/build_langserver/lsp"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/tools/build_langserver/lsp"
 )
 
 var log = logging.MustGetLogger("build_langserver")

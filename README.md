@@ -1,4 +1,4 @@
-# Please [![Build Status](https://circleci.com/gh/thought-machine/please.svg?style=shield)](https://circleci.com/gh/thought-machine/please) [![Build Status](https://api.cirrus-ci.com/github/thought-machine/please.svg)](https://cirrus-ci.com/github/thought-machine/please) [![Go Report Card](https://goreportcard.com/badge/github.com/thought-machine/please)](https://goreportcard.com/report/github.com/thought-machine/please) [![Gitter chat](https://badges.gitter.im/thought-machine/please.png)](https://gitter.im/please-build/Lobby)
+# Please [![Build Status](https://circleci.com/gh/thought-machine/please.svg?style=shield)](https://circleci.com/gh/thought-machine/please) [![Build Status](https://api.cirrus-ci.com/github/thought-machine/please.svg)](https://cirrus-ci.com/github/thought-machine/please) [![Go Report Card](https://goreportcard.com/badge/github.com/tiagovtristao/plz)](https://goreportcard.com/report/github.com/tiagovtristao/plz) [![Gitter chat](https://badges.gitter.im/thought-machine/please.png)](https://gitter.im/please-build/Lobby)
 
 Please is a cross-language build system with an emphasis on
 high performance, extensibility and reproducibility.
@@ -10,7 +10,7 @@ See http://please.build for more information.
 Currently Linux (tested on Ubuntu), macOS and FreeBSD are actively supported.
 
 If you're a fan of Please, don't forget to add yourself 
-to the [adopters](https://github.com/thought-machine/please/blob/master/ADOPTERS.md)
+to the [adopters](https://github.com/tiagovtristao/plz/blob/master/ADOPTERS.md)
 file.
 
 Getting Started
@@ -21,7 +21,7 @@ The easiest way to install it on your own machine is to run:
 curl -s https://get.please.build | bash
 ```
 Or, if you prefer, grab one of the tarballs off our
-[releases page](https://github.com/thought-machine/please/releases)
+[releases page](https://github.com/tiagovtristao/plz/releases)
 and extract it yourself; it typically lives in `~/.please`.
 
 You can also install using [Homebrew](https://brew.sh):
@@ -158,7 +158,7 @@ languages but fell flat when breaking new ground.
 The biggest difference between Please and the competition is that Please is 
 designed from the ground up to be extensible. The built-in languages are all 
 defined in the same
-[build language](https://github.com/thought-machine/please/tree/master/rules)
+[build language](https://github.com/tiagovtristao/plz/tree/master/rules)
 as you use to define your targets, demonstrating that there's nothing special 
 about them. This puts the build definitions where they should be: in your 
 domain. You have all the same tools Please has to expand your build 
@@ -187,7 +187,7 @@ Building Please
 If you're looking to get involved, check out the contributor 
 [guidance](CONTRIBUTING.md) to help you get started. If you're a fan of 
 Please, don't forget to add yourself to the 
-[adopters](https://github.com/thought-machine/please/blob/master/ADOPTERS.md) 
+[adopters](https://github.com/tiagovtristao/plz/blob/master/ADOPTERS.md) 
 file.
 
 To build Please yourself, run `./bootstrap.sh` in the repo root.

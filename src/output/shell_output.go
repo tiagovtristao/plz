@@ -17,9 +17,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/test"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/test"
 )
 
 // durationGranularity is the granularity that we build durations at.

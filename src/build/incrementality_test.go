@@ -10,7 +10,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 var KnownFields = map[string]bool{

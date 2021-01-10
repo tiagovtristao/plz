@@ -61,7 +61,7 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"github.com/thought-machine/please/src/fs"
+	"github.com/tiagovtristao/plz/src/fs"
 )
 
 var locationReplacement = regexp.MustCompile(`\$\(location ([^\)]+)\)`)

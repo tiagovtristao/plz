@@ -1,4 +1,4 @@
-package(go_import_path = "github.com/thought-machine/please")
+package(go_import_path = "github.com/tiagovtristao/plz")
 
 go_library(
     name = "importpath",

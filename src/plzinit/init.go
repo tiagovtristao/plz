@@ -10,11 +10,11 @@ import (
 
 	"gopkg.in/op/go-logging.v1"
 
-	"github.com/thought-machine/please/src/assets"
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/fs"
-	"github.com/thought-machine/please/src/scm"
+	"github.com/tiagovtristao/plz/src/assets"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/fs"
+	"github.com/tiagovtristao/plz/src/scm"
 )
 
 const configTemplate = `; Please config file

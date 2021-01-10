@@ -10,7 +10,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/thought-machine/please/src/cli"
+	"github.com/tiagovtristao/plz/src/cli"
 	"golang.org/x/crypto/openpgp"
 )
 

@@ -2,7 +2,7 @@ package query
 
 import (
 	"fmt"
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 // Deps prints all transitive dependencies of a set of targets.

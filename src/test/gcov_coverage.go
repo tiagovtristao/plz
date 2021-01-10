@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 // gcovPlaceholder is used to mark empty coverage files for C++ tests when coverage is disabled for them.

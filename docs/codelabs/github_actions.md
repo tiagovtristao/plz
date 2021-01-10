@@ -5,7 +5,7 @@ categories: intermediate
 tags: medium
 status: Published
 authors: Márk Sági-Kazár
-Feedback Link: https://github.com/thought-machine/please
+Feedback Link: https://github.com/tiagovtristao/plz
 
 # Running Please on GitHub Actions
 ## Overview
@@ -98,7 +98,7 @@ jobs:
 Compared to the example earlier, this workflow uses the `pleasew` script to download Please and build the project.
 
 Notice the `//...` bit at the end of the command: it's necessary on GitHub Actions.
-Check [this](https://github.com/thought-machine/please/issues/1174) issue for more details.
+Check [this](https://github.com/tiagovtristao/plz/issues/1174) issue for more details.
 
 ## setup-please action
 Duration: 10

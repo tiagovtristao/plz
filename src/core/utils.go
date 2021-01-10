@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/thought-machine/please/src/fs"
+	"github.com/tiagovtristao/plz/src/fs"
 )
 
 // RepoRoot is the root of the Please repository

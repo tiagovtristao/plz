@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 // initPrintf sets up the replacements used by printf.

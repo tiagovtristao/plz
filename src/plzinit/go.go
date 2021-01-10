@@ -3,12 +3,12 @@ package plzinit
 import (
 	"bufio"
 	"fmt"
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 	"os"
 	"path"
 	"strings"
 
-	"github.com/thought-machine/please/src/cli"
+	"github.com/tiagovtristao/plz/src/cli"
 )
 
 const goConfig = `

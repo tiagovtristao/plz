@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/tools/http_cache/cache"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/tools/http_cache/cache"
 	"gopkg.in/op/go-logging.v1"
 	"net/http"
 	"os"

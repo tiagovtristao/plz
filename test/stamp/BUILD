@@ -2,8 +2,8 @@ go_binary(
     name = "stamp",
     srcs = ["main.go"],
     definitions = {
-        "github.com/thought-machine/please/test/stamp/lib.GitRevision": "$SCM_REVISION",
-        "github.com/thought-machine/please/test/stamp/lib.GitDescribe": "$SCM_DESCRIBE",
+        "github.com/tiagovtristao/plz/test/stamp/lib.GitRevision": "$SCM_REVISION",
+        "github.com/tiagovtristao/plz/test/stamp/lib.GitDescribe": "$SCM_DESCRIBE",
     },
     stamp = True,
     deps = ["//test/stamp/lib"],
@@ -20,8 +20,8 @@ if is_platform(os = "linux"):
         name = "stamp_static",
         srcs = ["main.go"],
         definitions = {
-            "github.com/thought-machine/please/test/stamp/lib.GitRevision": "$SCM_REVISION",
-            "github.com/thought-machine/please/test/stamp/lib.GitDescribe": "$SCM_DESCRIBE",
+            "github.com/tiagovtristao/plz/test/stamp/lib.GitRevision": "$SCM_REVISION",
+            "github.com/tiagovtristao/plz/test/stamp/lib.GitDescribe": "$SCM_DESCRIBE",
         },
         stamp = True,
         static = True,

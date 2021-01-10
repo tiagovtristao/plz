@@ -2,7 +2,7 @@ package query
 
 import "fmt"
 import "path"
-import "github.com/thought-machine/please/src/core"
+import "github.com/tiagovtristao/plz/src/core"
 
 // TargetOutputs prints all output files for a set of targets.
 func TargetOutputs(graph *core.BuildGraph, labels []core.BuildLabel) {

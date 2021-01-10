@@ -8,8 +8,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/fs"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/fs"
 )
 
 func TestRewriteHashes(t *testing.T) {

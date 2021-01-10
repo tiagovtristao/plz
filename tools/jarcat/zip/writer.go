@@ -16,8 +16,8 @@ import (
 
 	"gopkg.in/op/go-logging.v1"
 
-	"github.com/thought-machine/please/src/fs"
-	"github.com/thought-machine/please/third_party/go/zip"
+	"github.com/tiagovtristao/plz/src/fs"
+	"github.com/tiagovtristao/plz/third_party/go/zip"
 )
 
 var log = logging.MustGetLogger("zip")

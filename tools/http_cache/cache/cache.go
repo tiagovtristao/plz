@@ -2,7 +2,7 @@ package cache
 
 import (
 	"fmt"
-	"github.com/thought-machine/please/src/fs"
+	"github.com/tiagovtristao/plz/src/fs"
 	"gopkg.in/op/go-logging.v1"
 	"io"
 	"net/http"

@@ -15,12 +15,12 @@ import (
 
 	"gopkg.in/op/go-logging.v1"
 
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/src/fs"
-	"github.com/thought-machine/please/tools/jarcat/ar"
-	"github.com/thought-machine/please/tools/jarcat/tar"
-	"github.com/thought-machine/please/tools/jarcat/unzip"
-	"github.com/thought-machine/please/tools/jarcat/zip"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/src/fs"
+	"github.com/tiagovtristao/plz/tools/jarcat/ar"
+	"github.com/tiagovtristao/plz/tools/jarcat/tar"
+	"github.com/tiagovtristao/plz/tools/jarcat/unzip"
+	"github.com/tiagovtristao/plz/tools/jarcat/zip"
 )
 
 var javaExcludePrefixes = []string{

@@ -7,7 +7,7 @@ import (
 	"compress/gzip"
 	"encoding/hex"
 	"fmt"
-	"github.com/thought-machine/please/src/utils"
+	"github.com/tiagovtristao/plz/src/utils"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -17,8 +17,8 @@ import (
 
 	"github.com/hashicorp/go-retryablehttp"
 
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/fs"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/fs"
 )
 
 type httpCache struct {

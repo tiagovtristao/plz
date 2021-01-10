@@ -7,7 +7,7 @@ import (
 
 	"github.com/sourcegraph/go-lsp"
 
-	"github.com/thought-machine/please/src/parse/asp"
+	"github.com/tiagovtristao/plz/src/parse/asp"
 )
 
 // symbols implements the basic form of textDocument/symbols, i.e. it returns a list of

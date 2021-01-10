@@ -11,7 +11,7 @@ import (
 
 	"github.com/peterebden/tools/cover"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 func looksLikeGoCoverageResults(results []byte) bool {

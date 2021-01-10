@@ -9,11 +9,11 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/thought-machine/please/rules"
-	"github.com/thought-machine/please/rules/bazel"
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/parse/asp"
+	"github.com/tiagovtristao/plz/rules"
+	"github.com/tiagovtristao/plz/rules/bazel"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/parse/asp"
 )
 
 // InitParser initialises the parser engine. This is guaranteed to be called exactly once before any calls to Parse().

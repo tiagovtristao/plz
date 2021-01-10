@@ -3,7 +3,7 @@ package plzinit
 import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/thought-machine/please/src/fs"
+	"github.com/tiagovtristao/plz/src/fs"
 	"io/ioutil"
 	"testing"
 )

@@ -10,7 +10,7 @@ import (
 	"github.com/bazelbuild/buildtools/build"
 	"github.com/sourcegraph/go-lsp"
 
-	"github.com/thought-machine/please/src/parse/asp"
+	"github.com/tiagovtristao/plz/src/parse/asp"
 )
 
 // A doc is a representation of a document that's opened by the editor.

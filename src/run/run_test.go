@@ -2,13 +2,13 @@ package run
 
 import (
 	"context"
-	"github.com/thought-machine/please/src/cli"
+	"github.com/tiagovtristao/plz/src/cli"
 	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 func init() {

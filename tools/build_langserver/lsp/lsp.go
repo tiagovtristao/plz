@@ -16,10 +16,10 @@ import (
 	"github.com/sourcegraph/jsonrpc2"
 	"gopkg.in/op/go-logging.v1"
 
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/help"
-	"github.com/thought-machine/please/src/parse/asp"
-	"github.com/thought-machine/please/src/plz"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/help"
+	"github.com/tiagovtristao/plz/src/parse/asp"
+	"github.com/tiagovtristao/plz/src/plz"
 )
 
 var log = logging.MustGetLogger("lsp")

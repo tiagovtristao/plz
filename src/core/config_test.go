@@ -13,7 +13,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/thought-machine/go-flags"
 
-	"github.com/thought-machine/please/src/cli"
+	"github.com/tiagovtristao/plz/src/cli"
 )
 
 func TestPlzConfigWorking(t *testing.T) {

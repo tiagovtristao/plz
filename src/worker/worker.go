@@ -12,7 +12,7 @@ import (
 
 	"gopkg.in/op/go-logging.v1"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 var log = logging.MustGetLogger("worker")

@@ -968,7 +968,7 @@ Version 13.2.0
       * Supports downloading releases from Github if downloadlocation is set correctly.
       * Not releasing .deb artifacts for now
       * Releases are now built on CircleCI and released automatically.
-      * Java components now live in github.com/thought-machine/please-java. They are
+      * Java components now live in github.com/tiagovtristao/plz-java. They are
         still released as part of Please in the same way as before, but there's no
         javac requirement to build it now.
     * please tool maven has a --graph flag that allows some integration

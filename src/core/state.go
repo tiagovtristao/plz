@@ -16,9 +16,9 @@ import (
 	"github.com/Workiva/go-datastructures/queue"
 	"lukechampine.com/blake3"
 
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/src/fs"
-	"github.com/thought-machine/please/src/process"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/src/fs"
+	"github.com/tiagovtristao/plz/src/process"
 )
 
 // startTime is as close as we can conveniently get to process start time.

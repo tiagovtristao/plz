@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 // Not sure what the -6 suffixes are about.

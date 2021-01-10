@@ -9,8 +9,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/fs"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/fs"
 )
 
 func parseTestResults(data [][]byte) (core.TestSuite, error) {

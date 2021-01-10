@@ -7,8 +7,8 @@ import (
 	"path"
 	"sort"
 
-	"github.com/thought-machine/please/src/build"
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/build"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 // DiffGraphs calculates the difference between two build graphs.

@@ -9,9 +9,9 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/src/parse/asp"
-	"github.com/thought-machine/please/src/utils"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/src/parse/asp"
+	"github.com/tiagovtristao/plz/src/utils"
 )
 
 const topicsHelpMessage = `

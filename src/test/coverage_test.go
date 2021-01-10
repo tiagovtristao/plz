@@ -6,7 +6,7 @@ import (
 	"github.com/peterebden/tools/cover"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 var target = &core.BuildTarget{Label: core.BuildLabel{PackageName: "src/test", Name: "coverage_test"}}

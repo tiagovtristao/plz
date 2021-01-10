@@ -23,9 +23,9 @@ import (
 	"github.com/hashicorp/go-multierror"
 	"gopkg.in/op/go-logging.v1"
 
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/fs"
-	"github.com/thought-machine/please/src/worker"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/fs"
+	"github.com/tiagovtristao/plz/src/worker"
 )
 
 var log = logging.MustGetLogger("build")
@@ -926,7 +926,7 @@ func runPostBuildFunction(tid int, state *core.BuildState, target *core.BuildTar
 			log.Warning("The build output for %s differs from what we got back from the cache earlier.\n"+
 				"This implies your target's output is nondeterministic; Please won't re-run the\n"+
 				"post-build function, which will *probably* be okay, but Please can't be sure.\n"+
-				"See https://github.com/thought-machine/please/issues/113 for more information.", target.Label)
+				"See https://github.com/tiagovtristao/plz/issues/113 for more information.", target.Label)
 			log.Debug("Cached build output for %s: %s\n\nNew build output: %s", target.Label, prevOutput, output)
 		}
 		return nil

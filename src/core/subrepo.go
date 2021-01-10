@@ -1,7 +1,7 @@
 package core
 
 import (
-	"github.com/thought-machine/please/src/cli"
+	"github.com/tiagovtristao/plz/src/cli"
 	"path"
 )
 

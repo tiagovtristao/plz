@@ -2,6 +2,6 @@ This is a prebuilt image based on Ubuntu Bionic which contains
 everything you should need to build Please.
 
 Run the following to get started:
- git clone https://github.com/thought-machine/please.git
+ git clone https://github.com/tiagovtristao/plz.git
  cd please
  ./bootstrap.sh

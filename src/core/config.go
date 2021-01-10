@@ -21,8 +21,8 @@ import (
 	"github.com/peterebden/gcfg"
 	"github.com/thought-machine/go-flags"
 
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/src/fs"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/src/fs"
 )
 
 // OsArch is the os/arch pair, like linux_amd64 etc.
@@ -439,7 +439,7 @@ type Configuration struct {
 		GoRoot           string `help:"If set, will set the GOROOT environment variable appropriately during build actions." var:"GOROOT"`
 		TestTool         string `help:"Sets the location of the please_go_test tool that is used to template the test main for go_test rules." var:"GO_TEST_TOOL"`
 		GoPath           string `help:"If set, will set the GOPATH environment variable appropriately during build actions." var:"GOPATH"`
-		ImportPath       string `help:"Sets the default Go import path at the root of this repository.\nFor example, in the Please repo, we might set it to github.com/thought-machine/please to allow imports from that package within the repo." var:"GO_IMPORT_PATH"`
+		ImportPath       string `help:"Sets the default Go import path at the root of this repository.\nFor example, in the Please repo, we might set it to github.com/tiagovtristao/plz to allow imports from that package within the repo." var:"GO_IMPORT_PATH"`
 		CgoCCTool        string `help:"Sets the location of CC while building cgo_library and cgo_test rules. Defaults to gcc" var:"CGO_CC_TOOL"`
 		FilterTool       string `help:"Sets the location of the please_go_filter tool that is used to filter source files against build constraints." var:"GO_FILTER_TOOL"`
 		InstallTool      string `help:"Sets the location of the please_go_install tool that is used to install go modules." var:"GO_INSTALL_TOOL"`

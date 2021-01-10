@@ -70,9 +70,9 @@
 <p>The typical idiom we use is to place BUILD files under a third_party directory,
   to make it clear where they're coming from. Commonly we separate them by language
   for multi-language repos as well.<br/>
-  See <a href="https://github.com/thought-machine/please/tree/master/third_party/go">third_party/go</a>,
-  <a href="https://github.com/thought-machine/please/tree/master/third_party/python">third_party/python</a> and
-  <a href="https://github.com/thought-machine/please/tree/master/third_party/java">third_party/java</a>
+  See <a href="https://github.com/tiagovtristao/plz/tree/master/third_party/go">third_party/go</a>,
+  <a href="https://github.com/tiagovtristao/plz/tree/master/third_party/python">third_party/python</a> and
+  <a href="https://github.com/tiagovtristao/plz/tree/master/third_party/java">third_party/java</a>
   in Please's repo for some examples of what these look like.</p>
 
 <p>There's no explicit command to download third-party dependencies (e.g. <code>plz fetch</code> or similar).
@@ -91,7 +91,7 @@
   extract it, and make the contents available to other rules. In most cases you can choose to attach a
   BUILD file to them, but it can also use an existing one if appropriate.</p>
 
-<p>For example (as seen <a href="https://github.com/thought-machine/please/blob/master/third_party/cc/BUILD">in the Please repo</a>):
+<p>For example (as seen <a href="https://github.com/tiagovtristao/plz/blob/master/third_party/cc/BUILD">in the Please repo</a>):
   <pre><code class="language-plz">
     github_repo(
         name = "gtest",

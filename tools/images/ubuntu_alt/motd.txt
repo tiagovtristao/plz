@@ -4,6 +4,6 @@ Note that it's an alternative to the standard image so some
 minor issues may exist.
 
 Run the following to get started:
- git clone https://github.com/thought-machine/please.git
+ git clone https://github.com/tiagovtristao/plz.git
  cd please
  ./bootstrap.sh

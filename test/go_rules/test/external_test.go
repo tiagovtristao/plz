@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	. "github.com/thought-machine/please/test/go_rules/test"
+	. "github.com/tiagovtristao/plz/test/go_rules/test"
 )
 
 func TestAnswer(t *testing.T) {

@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 func makeTarget2(g *core.BuildGraph, label string, filegroup bool, outputs ...string) *core.BuildTarget {

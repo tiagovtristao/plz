@@ -18,7 +18,7 @@ keep = //package:all
 filtertool = //tools/please_go_filter
 installtool = //tools/please_go_install
 testtool = //tools/please_go_test
-importpath = github.com/thought-machine/please
+importpath = github.com/tiagovtristao/plz
 
 [cpp]
 defaultoptcppflags = --std=c++11 -O2 -DNDEBUG -Wall -Wextra -Werror -Wno-unused-parameter

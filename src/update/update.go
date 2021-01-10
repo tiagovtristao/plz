@@ -15,7 +15,7 @@ import (
 	"fmt"
 	"github.com/coreos/go-semver/semver"
 	"github.com/hashicorp/go-retryablehttp"
-	"github.com/thought-machine/please/src/utils"
+	"github.com/tiagovtristao/plz/src/utils"
 	"github.com/ulikunitz/xz"
 	"gopkg.in/op/go-logging.v1"
 	"io"
@@ -28,10 +28,10 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/thought-machine/please/src/cli"
-	"github.com/thought-machine/please/src/core"
-	"github.com/thought-machine/please/src/fs"
-	"github.com/thought-machine/please/src/process"
+	"github.com/tiagovtristao/plz/src/cli"
+	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/fs"
+	"github.com/tiagovtristao/plz/src/process"
 )
 
 var log = logging.MustGetLogger("update")

@@ -16,7 +16,7 @@ import (
 
 	"github.com/ulikunitz/xz"
 
-	"github.com/thought-machine/please/third_party/go/zip"
+	"github.com/tiagovtristao/plz/third_party/go/zip"
 )
 
 // concurrency controls the maximum level of concurrency we'll allow.

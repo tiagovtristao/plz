@@ -14,7 +14,7 @@ import (
 
 	"gopkg.in/op/go-logging.v1"
 
-	"github.com/thought-machine/please/src/cli"
+	"github.com/tiagovtristao/plz/src/cli"
 )
 
 var log = logging.MustGetLogger("progress")

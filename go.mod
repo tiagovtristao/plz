@@ -1,4 +1,4 @@
-module github.com/thought-machine/please
+module github.com/tiagovtristao/plz
 
 require (
 	github.com/DataDog/zstd v1.4.5

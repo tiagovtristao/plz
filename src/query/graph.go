@@ -7,8 +7,8 @@ import (
 	"path"
 	"sync"
 
-	"github.com/thought-machine/please/src/build"
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/build"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 // Graph prints a representation of the build graph as JSON.

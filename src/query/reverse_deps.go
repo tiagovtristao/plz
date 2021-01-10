@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 // ReverseDeps finds all transitive targets that depend on the set of input labels.

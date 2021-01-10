@@ -3,7 +3,7 @@ package query
 import (
 	"fmt"
 
-	"github.com/thought-machine/please/src/core"
+	"github.com/tiagovtristao/plz/src/core"
 )
 
 // WhatOutputs prints the target responsible for producing each of the provided files
