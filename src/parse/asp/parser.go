@@ -13,6 +13,7 @@ import (
 	"gopkg.in/op/go-logging.v1"
 
 	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/parse/snapshot"
 )
 
 var log = logging.MustGetLogger("asp")
@@ -56,6 +57,16 @@ func newParser() *Parser {
 		builtins: map[string][]byte{},
 		limiter:  make(semaphore, 10),
 	}
+}
+
+// InterpreterSnapshots streams context-aware and time-sensitive snapshot information during the interpretation stage.
+func (p *Parser) InterpreterSnapshots() <-chan snapshot.Interpreter {
+	return p.interpreter.Snapshots()
+}
+
+// CloseInterpreterSnapshots closes the InterpreterSnapshots channel.
+func (p *Parser) CloseInterpreterSnapshots() {
+	p.interpreter.CloseSnapshots()
 }
 
 // LoadBuiltins instructs the parser to load rules from this file as built-ins.

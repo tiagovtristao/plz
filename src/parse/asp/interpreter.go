@@ -7,12 +7,14 @@ import (
 	"sync"
 
 	"github.com/tiagovtristao/plz/src/core"
+	"github.com/tiagovtristao/plz/src/parse/snapshot"
 )
 
 // An interpreter holds the package-independent state about our parsing process.
 type interpreter struct {
 	scope           *scope
 	parser          *Parser
+	snapshots       chan snapshot.Interpreter
 	subincludes     map[string]pyDict
 	config          map[*core.Configuration]*pyConfig
 	mutex           sync.RWMutex
@@ -38,6 +40,21 @@ func newInterpreter(state *core.BuildState, p *Parser) *interpreter {
 	s.interpreter = i
 	s.LoadSingletons(state)
 	return i
+}
+
+// Snapshots streams context-aware and time-sensitive snapshot information during the interpretation stage.
+func (i *interpreter) Snapshots() <-chan snapshot.Interpreter {
+	if i.snapshots == nil {
+		i.snapshots = make(chan snapshot.Interpreter)
+	}
+	return i.snapshots
+}
+
+// CloseSnapshots closes the Snapshots channel.
+func (i *interpreter) CloseSnapshots() {
+	if i.snapshots != nil {
+		close(i.snapshots)
+	}
 }
 
 // LoadBuiltins loads a set of builtins from a file, optionally with its contents.
@@ -722,7 +739,7 @@ func (s *scope) callObject(name string, obj pyObject, c *Call) pyObject {
 	if !ok {
 		s.Error("Non-callable object '%s' (is a %s)", name, obj.Type())
 	}
-	return f.Call(s, c)
+	return f.Call(s, name, c)
 }
 
 // Constant returns an object from an expression that describes a constant,

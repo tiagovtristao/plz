@@ -62,6 +62,7 @@ func Run(targets, preTargets []core.BuildLabel, state *core.BuildState, config *
 		_, _, in, out := state.RemoteClient.DataRate()
 		log.Info("Total remote RPC data in: %d out: %d", in, out)
 	}
+	state.Parser.CloseInterpreterSnapshots()
 	state.CloseResults()
 }
 

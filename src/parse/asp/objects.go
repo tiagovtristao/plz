@@ -604,7 +604,7 @@ func (f *pyFunc) String() string {
 	return fmt.Sprintf("<function %s>", f.name)
 }
 
-func (f *pyFunc) Call(s *scope, c *Call) pyObject {
+func (f *pyFunc) Call(s *scope, name string, c *Call) pyObject {
 	if f.nativeCode != nil {
 		if f.kwargs {
 			return f.callNative(s.NewScope(), c)
@@ -643,6 +643,11 @@ func (f *pyFunc) Call(s *scope, c *Call) pyObject {
 			s2.Set(a, f.defaultArg(s, i, a))
 		}
 	}
+
+	if s.interpreter.snapshots != nil {
+		s.interpreter.snapshots <- getInitialisedCallSnapshot(s2, name, c)
+	}
+
 	ret := s2.interpretStatements(f.code)
 	if ret == nil {
 		return None // Implicit 'return None' in any function that didn't do that itself.

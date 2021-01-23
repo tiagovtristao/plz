@@ -14,6 +14,7 @@ import (
 	"github.com/tiagovtristao/plz/src/cli"
 	"github.com/tiagovtristao/plz/src/core"
 	"github.com/tiagovtristao/plz/src/parse/asp"
+	"github.com/tiagovtristao/plz/src/parse/snapshot"
 )
 
 // InitParser initialises the parser engine. This is guaranteed to be called exactly once before any calls to Parse().
@@ -77,6 +78,16 @@ func newAspParser(state *core.BuildState) *asp.Parser {
 
 	log.Debug("Parser initialised")
 	return p
+}
+
+// InterpreterSnapshots streams context-aware and time-sensitive snapshot information during the interpretation stage.
+func (p *aspParser) InterpreterSnapshots() <-chan snapshot.Interpreter {
+	return p.asp.InterpreterSnapshots()
+}
+
+// CloseInterpreterSnapshots closes the InterpreterSnapshots channel.
+func (p *aspParser) CloseInterpreterSnapshots() {
+	p.asp.CloseInterpreterSnapshots()
 }
 
 func (p *aspParser) ParseFile(state *core.BuildState, pkg *core.Package, filename string) error {

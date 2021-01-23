@@ -18,6 +18,7 @@ import (
 
 	"github.com/tiagovtristao/plz/src/cli"
 	"github.com/tiagovtristao/plz/src/fs"
+	"github.com/tiagovtristao/plz/src/parse/snapshot"
 	"github.com/tiagovtristao/plz/src/process"
 )
 
@@ -80,6 +81,10 @@ type TestTaskQueue = chan TestTask
 
 // A Parser is the interface to reading and interacting with BUILD files.
 type Parser interface {
+	// InterpreterSnapshots streams context-aware and time-sensitive snapshot information during the interpretation stage.
+	InterpreterSnapshots() <-chan snapshot.Interpreter
+	// CloseInterpreterSnapshots closes the InterpreterSnapshots channel
+	CloseInterpreterSnapshots()
 	// ParseFile parses a single BUILD file into the given package.
 	ParseFile(state *BuildState, pkg *Package, filename string) error
 	// ParseReader parses a single BUILD file into the given package.
