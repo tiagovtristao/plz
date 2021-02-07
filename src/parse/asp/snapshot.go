@@ -5,8 +5,13 @@ import (
 )
 
 func getInitialisedCallSnapshot(s *scope, name string, c *Call) snapshot.Interpreter {
+	var buildFileName string
+	if s.pkg != nil {
+		buildFileName = s.pkg.Filename
+	}
+
 	return snapshot.Interpreter{
-		BuildFileName: s.pkg.Filename,
+		BuildFileName: buildFileName,
 		InitialisedCall: &snapshot.InitialisedCall{
 			Name: name,
 			Args: snapshotArguments(s, c.Arguments),
