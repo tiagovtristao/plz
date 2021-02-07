@@ -45,7 +45,7 @@ func newInterpreter(state *core.BuildState, p *Parser) *interpreter {
 // Snapshots streams context-aware and time-sensitive snapshot information during the interpretation stage.
 func (i *interpreter) Snapshots() <-chan snapshot.Interpreter {
 	if i.snapshots == nil {
-		i.snapshots = make(chan snapshot.Interpreter, 1000)
+		i.snapshots = make(chan snapshot.Interpreter)
 	}
 	return i.snapshots
 }
