@@ -230,6 +230,17 @@ func (pkg *Package) verifyOutputs() []string {
 	return ret
 }
 
+// FindPackageFileName returns the associated BUILD file name with the given package.
+func FindPackageFileName(state *BuildState, pkg BuildLabel) string {
+	for _, buildFileName := range state.Config.Parse.BuildFileName {
+		if filePath := path.Join(pkg.PackageName, buildFileName); fs.FileExists(filePath) {
+			return filePath
+		}
+	}
+
+	return ""
+}
+
 // FindOwningPackages returns build labels corresponding to the packages that own each of the given files.
 func FindOwningPackages(state *BuildState, files []string) []BuildLabel {
 	ret := make([]BuildLabel, len(files))
