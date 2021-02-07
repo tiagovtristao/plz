@@ -6,7 +6,7 @@ import (
 
 func getInitialisedCallSnapshot(s *scope, name string, c *Call) snapshot.Interpreter {
 	return snapshot.Interpreter{
-		Filename: s.pkg.Filename,
+		BuildFileName: s.pkg.Filename,
 		InitialisedCall: &snapshot.InitialisedCall{
 			Name: name,
 			Args: snapshotArguments(s, c.Arguments),

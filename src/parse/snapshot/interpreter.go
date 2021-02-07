@@ -2,7 +2,7 @@ package snapshot
 
 // Interpreter structure for context-aware and time-sensitive snapshot information
 type Interpreter struct {
-	Filename        string
+	BuildFileName   string
 	InitialisedCall *InitialisedCall
 }
 
