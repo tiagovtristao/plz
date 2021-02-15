@@ -12,6 +12,7 @@ go_library(
         "//src/cli",
         "//src/core",
         "//src/fs",
+        "//src/parse/snapshot",
         "//third_party/go:logging",
         "//third_party/go:promptui",
     ],

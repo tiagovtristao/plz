@@ -158,7 +158,7 @@ def github_repo(name:str, repo:str, revision:str, build_file:str=None, hashes:st
 
     Args:
       name: Name of the rule.
-      repo: Github repo to fetch from (e.g. "thought-machine/please").
+      repo: Github repo to fetch from (e.g. "tiagovtristao/plz").
       revision: Revision to download.
       build_file: The file to use as a BUILD file for this subrepository.
       hashes: List of hashes to verify the rule with.
@@ -170,7 +170,7 @@ def github_repo(name:str, repo:str, revision:str, build_file:str=None, hashes:st
                     section.
     """
     org, _, repo = repo.partition('/')
-    assert repo, "Must pass a valid Github repo argument, e.g. thought-machine/please"
+    assert repo, "Must pass a valid Github repo argument, e.g. tiagovtristao/plz"
     return new_http_archive(
         name = name,
         urls = [f'https://github.com/{org}/{repo}/archive/{revision}.zip'],

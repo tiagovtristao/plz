@@ -38,7 +38,7 @@ class ReleaseGen:
 
     def __init__(self, github_token:str, dry_run:bool=False):
         self.url = 'https://api.github.com'
-        self.releases_url = self.url + '/repos/thought-machine/please/releases'
+        self.releases_url = self.url + '/repos/tiagovtristao/plz/releases'
         self.upload_url = self.releases_url.replace('api.', 'uploads.') + '/<id>/assets?name='
         self.session = requests.Session()
         self.session.verify = '/etc/ssl/certs/ca-certificates.crt'

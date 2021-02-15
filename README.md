@@ -1,4 +1,4 @@
-# Please [![Build Status](https://circleci.com/gh/thought-machine/please.svg?style=shield)](https://circleci.com/gh/thought-machine/please) [![Build Status](https://api.cirrus-ci.com/github/thought-machine/please.svg)](https://cirrus-ci.com/github/thought-machine/please) [![Go Report Card](https://goreportcard.com/badge/github.com/tiagovtristao/plz)](https://goreportcard.com/report/github.com/tiagovtristao/plz) [![Gitter chat](https://badges.gitter.im/thought-machine/please.png)](https://gitter.im/please-build/Lobby)
+# Please [![Build Status](https://circleci.com/gh/tiagovtristao/plz.svg?style=shield)](https://circleci.com/gh/tiagovtristao/plz) [![Build Status](https://api.cirrus-ci.com/github/tiagovtristao/plz.svg)](https://cirrus-ci.com/github/tiagovtristao/plz) [![Go Report Card](https://goreportcard.com/badge/github.com/tiagovtristao/plz)](https://goreportcard.com/report/github.com/tiagovtristao/plz) [![Gitter chat](https://badges.gitter.im/tiagovtristao/plz.png)](https://gitter.im/please-build/Lobby)
 
 Please is a cross-language build system with an emphasis on
 high performance, extensibility and reproducibility.
@@ -26,7 +26,7 @@ and extract it yourself; it typically lives in `~/.please`.
 
 You can also install using [Homebrew](https://brew.sh):
 ```bash
-brew tap thought-machine/please
+brew tap tiagovtristao/plz
 brew install please
 ```
 
@@ -176,10 +176,6 @@ can be added to Please though [aliases](https://please.build/config.html#alias) 
 tie into the Please tab-completions. Not only can flags and arguments be 
 completed, but they can also leverage the build graph to complete labels enabling you 
 to truly craft your developer experience the way you want it.
-
-We're also relatively small and welcoming community with few stakeholders. If you're having a
-problem, or want something changes, it's easy to interact with us and work something out. 
-The best place to start is on gitter (link at the top), come say hi!
 
 Building Please
 ===============

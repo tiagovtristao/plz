@@ -47,8 +47,10 @@ func registerBuiltins(s *scope) {
 	setNativeCode(s, "subrepo_name", subrepoName)
 	setNativeCode(s, "canonicalise", canonicalise)
 	setNativeCode(s, "get_labels", getLabels)
+	setNativeCode(s, "add_label", addLabel)
 	setNativeCode(s, "add_dep", addDep)
 	setNativeCode(s, "add_out", addOut)
+	setNativeCode(s, "get_outs", getOuts)
 	setNativeCode(s, "add_licence", addLicence)
 	setNativeCode(s, "get_licences", getLicences)
 	setNativeCode(s, "get_command", getCommand)
@@ -290,6 +292,22 @@ func subincludeTarget(s *scope, l core.BuildLabel) *core.BuildTarget {
 		s.NAssert(s.contextPkg.Target(l.Name) == nil, "Target :%s is not defined in this package; it has to be defined before the subinclude() call", l.Name)
 	}
 	s.NAssert(l.IsAllTargets() || l.IsAllSubpackages(), "Can't pass :all or /... to subinclude()")
+
+	// If we're including from a subrepo, or if we're in a subrepo and including from a different subrepo, make sure
+	// that package is parsed to avoid locking. Locks can occur when the target's package also subincludes that target.
+	//
+	// When this happens, both parse thread "WaitForBuiltTarget" expecting the other to queue the target to be built.
+	//
+	// By parsing the package first, the subrepo package's subinclude will queue the subrepo target to be built before
+	// we call WaitForBuiltTargetWithoutLimiter below avoiding the lockup.
+	if l.Subrepo != "" && l.SubrepoLabel().PackageName != s.contextPkg.Name && l.Subrepo != s.contextPkg.SubrepoName {
+		subrepoPackageLabel := core.BuildLabel{
+			PackageName: l.SubrepoLabel().PackageName,
+			Subrepo:     l.SubrepoLabel().Subrepo,
+			Name:        "all",
+		}
+		s.state.WaitForPackage(subrepoPackageLabel, pkgLabel)
+	}
 	// Temporarily release the parallelism limiter; this is important to keep us from deadlocking
 	// all available parser threads (easy to happen if they're all waiting on a single target which now can't start)
 	t := s.WaitForBuiltTargetWithoutLimiter(l, pkgLabel)
@@ -665,6 +683,23 @@ func getLabels(s *scope, args []pyObject) pyObject {
 	return getLabelsInternal(target, prefix, core.Building, all)
 }
 
+// addLabel adds a set of labels to the named rule
+func addLabel(s *scope, args []pyObject) pyObject {
+	name := string(args[0].(pyString))
+
+	var target *core.BuildTarget
+	if core.LooksLikeABuildLabel(name) {
+		label := core.ParseBuildLabel(name, s.pkg.Name)
+		target = s.state.Graph.TargetOrDie(label)
+	} else {
+		target = getTargetPost(s, name)
+	}
+
+	target.AddLabel(args[1].String())
+
+	return None
+}
+
 func getLabelsInternal(target *core.BuildTarget, prefix string, minState core.BuildTargetState, all bool) pyObject {
 	if target.State() < minState {
 		log.Fatalf("get_labels called on a target that is not yet built: %s", target.Label)
@@ -739,6 +774,26 @@ func addOut(s *scope, args []pyObject) pyObject {
 		s.pkg.MustRegisterOutput(out, target)
 	}
 	return None
+}
+
+// getOuts gets the outputs of a target
+func getOuts(s *scope, args []pyObject) pyObject {
+	name := args[0].String()
+
+	var target *core.BuildTarget
+	if core.LooksLikeABuildLabel(name) {
+		label := core.ParseBuildLabel(name, s.pkg.Name)
+		target = s.state.Graph.TargetOrDie(label)
+	} else {
+		target = getTargetPost(s, name)
+	}
+
+	outs := target.Outputs()
+	ret := make(pyList, len(outs))
+	for i, out := range outs {
+		ret[i] = pyString(out)
+	}
+	return ret
 }
 
 // addLicence adds a licence to a target.

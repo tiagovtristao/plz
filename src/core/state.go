@@ -161,8 +161,12 @@ type BuildState struct {
 	Include, Exclude []string
 	// Actual targets to exclude from discovery
 	ExcludeTargets []BuildLabel
-	// The original architecture that the user requested to build for.
-	OriginalArch cli.Arch
+	// The original architecture that the user requested to build for. Either the host arch, --arch, or the arch in the
+	// .plzconfig
+	TargetArch cli.Arch
+	// The architecture this state is for. This might change as we re-parse packages for different architectures e.g.
+	// for tools that run on the host vs. outputs that are compiled for the target arch above.
+	Arch cli.Arch
 	// True if we require rule hashes to be correctly verified (usually the case).
 	VerifyHashes bool
 	// Aggregated coverage for this run
@@ -231,7 +235,9 @@ type stateProgress struct {
 	pendingTargets     map[BuildLabel]chan struct{}
 	pendingTargetMutex sync.Mutex
 	// Used to track general package parsing requests.
-	pendingPackages     map[packageKey]chan struct{}
+	pendingPackages map[packageKey]chan struct{}
+	// similar to pendingPackages but consumers haven't committed to parsing the package
+	packageWaits        map[packageKey]chan struct{}
 	pendingPackageMutex sync.Mutex
 	// The set of known states
 	allStates []*BuildState
@@ -489,6 +495,9 @@ func (state *BuildState) LogBuildResult(tid int, label BuildLabel, status BuildR
 			if ch, present := state.progress.pendingPackages[packageKey{Name: label.PackageName, Subrepo: label.Subrepo}]; present {
 				close(ch) // This signals to anyone waiting that it's done.
 			}
+			if ch, present := state.progress.packageWaits[packageKey{Name: label.PackageName, Subrepo: label.Subrepo}]; present {
+				close(ch) // This signals to anyone waiting that it's done.
+			}
 		}()
 		return // We don't notify anything else on these.
 	}
@@ -604,6 +613,48 @@ func (state *BuildState) ExpandOriginalLabels() BuildLabels {
 	return state.ExpandLabels(targets)
 }
 
+func annotateLabels(labels []BuildLabel) []AnnotatedOutputLabel {
+	ret := make([]AnnotatedOutputLabel, len(labels))
+	for i, l := range labels {
+		ret[i] = AnnotatedOutputLabel{BuildLabel: l}
+	}
+	return ret
+}
+
+func readingStdinAnnotated(labels []AnnotatedOutputLabel) bool {
+	for _, l := range labels {
+		if l.BuildLabel == BuildLabelStdin {
+			return true
+		}
+	}
+	return false
+}
+
+// ExpandOriginalMaybeAnnotatedLabels works the same as ExpandOriginalLabels, however requires that the possitional args
+// be passed to it.
+func (state *BuildState) ExpandOriginalMaybeAnnotatedLabels(args []AnnotatedOutputLabel) []AnnotatedOutputLabel {
+	if readingStdinAnnotated(args) {
+		args = annotateLabels(state.ExpandOriginalLabels())
+	}
+	return state.ExpandMaybeAnnotatedLabels(args)
+}
+
+// ExpandMaybeAnnotatedLabels is the same as ExpandOriginalLabels except for annotated labels
+func (state *BuildState) ExpandMaybeAnnotatedLabels(labels []AnnotatedOutputLabel) []AnnotatedOutputLabel {
+	ret := make([]AnnotatedOutputLabel, 0, len(labels))
+	for _, l := range labels {
+		if l.Annotation != "" {
+			ret = append(ret, l)
+		} else {
+			for _, l := range state.ExpandLabels([]BuildLabel{l.BuildLabel}) {
+				ret = append(ret, AnnotatedOutputLabel{BuildLabel: l})
+			}
+		}
+	}
+
+	return ret
+}
+
 // ExpandLabels expands any pseudo-labels (ie. :all, ... has already been resolved to a bunch :all targets) from a set of labels.
 func (state *BuildState) ExpandLabels(labels []BuildLabel) BuildLabels {
 	ret := BuildLabels{}
@@ -654,10 +705,10 @@ func (state *BuildState) ExpandVisibleOriginalTargets() BuildLabels {
 	return ret
 }
 
-// WaitForPackage either returns the given package which is already parsed and available,
-// or returns nil if nothing's parsed it already, in which case everything else calling this
-// will wait for the caller to parse it themselves.
-func (state *BuildState) WaitForPackage(label BuildLabel) *Package {
+// SyncParsePackage either returns the given package which is already parsed and available,
+// or returns nil indicating it is ready to be parsed. Everything subsequently calling this
+// will block until the original caller parse it.
+func (state *BuildState) SyncParsePackage(label BuildLabel) *Package {
 	if p := state.Graph.PackageByLabel(label); p != nil {
 		return p
 	}
@@ -672,6 +723,37 @@ func (state *BuildState) WaitForPackage(label BuildLabel) *Package {
 	state.progress.pendingPackages[key] = make(chan struct{})
 	state.progress.pendingPackageMutex.Unlock()
 	return state.Graph.PackageByLabel(label) // Important to check again; it's possible to race against this whole lot.
+}
+
+// WaitForPackage is similar to WaitForBuiltTarget however
+func (state *BuildState) WaitForPackage(l, dependent BuildLabel) *Package {
+	if p := state.Graph.PackageByLabel(l); p != nil {
+		return p
+	}
+	key := packageKey{Name: l.PackageName, Subrepo: l.Subrepo}
+
+	state.progress.pendingPackageMutex.Lock()
+
+	// If something has promised to parse it, wait for them to do so
+	if ch, present := state.progress.pendingPackages[key]; present {
+		state.progress.pendingPackageMutex.Unlock()
+		<-ch
+		return state.Graph.PackageByLabel(l)
+	}
+
+	// If something has already queued the package to be parsed, wait for them
+	if ch, present := state.progress.packageWaits[key]; present {
+		state.progress.pendingPackageMutex.Unlock()
+		<-ch
+		return state.Graph.PackageByLabel(l)
+	}
+
+	// Otherwise queue the target for parse and recurse
+	state.AddPendingParse(l, dependent, true)
+	state.progress.packageWaits[key] = make(chan struct{})
+	state.progress.pendingPackageMutex.Unlock()
+
+	return state.WaitForPackage(l, dependent)
 }
 
 // WaitForBuiltTarget blocks until the given label is available as a build target and has been successfully built.
@@ -857,7 +939,7 @@ func (state *BuildState) ForArch(arch cli.Arch) *BuildState {
 	// This is slightly wrong in that other things (e.g. user-specified command line overrides) should
 	// in fact take priority over this, but that's a lot more fiddly to get right.
 	s := state.ForConfig(".plzconfig_" + arch.String())
-	s.Config.Build.Arch = arch
+	s.Arch = arch
 	return s
 }
 
@@ -866,7 +948,7 @@ func (state *BuildState) findArch(arch cli.Arch) *BuildState {
 	state.progress.mutex.Lock()
 	defer state.progress.mutex.Unlock()
 	for _, s := range state.progress.allStates {
-		if s.Config.Build.Arch == arch {
+		if s.Arch == arch {
 			return s
 		}
 	}
@@ -937,7 +1019,8 @@ func NewBuildState(config *Configuration) *BuildState {
 		NeedBuild:       true,
 		XattrsSupported: config.Build.Xattrs,
 		Coverage:        TestCoverage{Files: map[string][]LineCoverage{}},
-		OriginalArch:    cli.HostArch(),
+		TargetArch:      config.Build.Arch,
+		Arch:            cli.HostArch(),
 		Stats:           &SystemStats{},
 		progress: &stateProgress{
 			numActive:       1, // One for the initial target adding on the main thread.
@@ -945,6 +1028,7 @@ func NewBuildState(config *Configuration) *BuildState {
 			numPending:      1,
 			pendingTargets:  map[BuildLabel]chan struct{}{},
 			pendingPackages: map[packageKey]chan struct{}{},
+			packageWaits:    map[packageKey]chan struct{}{},
 			success:         true,
 		},
 	}
