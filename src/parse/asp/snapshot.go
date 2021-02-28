@@ -4,7 +4,7 @@ import (
 	"github.com/tiagovtristao/plz/src/parse/snapshot"
 )
 
-func getInitialisedCallSnapshot(s *scope, name string, c *Call) snapshot.Interpreter {
+func getInitialisedCallSnapshot(s *scope, c *Call, name string, args []pyObject) snapshot.Interpreter {
 	var buildFileName string
 	if s.pkg != nil {
 		buildFileName = s.pkg.Filename
@@ -14,17 +14,22 @@ func getInitialisedCallSnapshot(s *scope, name string, c *Call) snapshot.Interpr
 		BuildFileName: buildFileName,
 		InitialisedCall: &snapshot.InitialisedCall{
 			Name: name,
-			Args: snapshotArguments(s, c.Arguments),
+			Args: snapshotArguments(s, c, args),
 		},
 	}
 }
 
-func snapshotArguments(s *scope, args []CallArgument) map[string]snapshot.Argument {
+func snapshotArguments(s *scope, c *Call, args []pyObject) map[string]snapshot.Argument {
 	snapshot := make(map[string]snapshot.Argument)
 
-	for _, arg := range args {
+	for i, arg := range c.Arguments {
+		// TODO: Only named arguments supported for now
 		if arg.Name != "" {
-			snapshot[arg.Name] = snapshotArgument(s.locals[arg.Name])
+			if args != nil {
+				snapshot[arg.Name] = snapshotArgument(args[i])
+			} else {
+				snapshot[arg.Name] = snapshotArgument(s.locals[arg.Name])
+			}
 		}
 	}
 
@@ -58,6 +63,8 @@ func snapshotArgument(v pyObject) snapshot.Argument {
 			},
 		}
 	}
+
+	// TODO: Dict type missing
 
 	return snapshot.Argument{Other: v}
 }

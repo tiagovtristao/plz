@@ -645,7 +645,7 @@ func (f *pyFunc) Call(s *scope, name string, c *Call) pyObject {
 	}
 
 	if s.interpreter.snapshots != nil {
-		s.interpreter.snapshots <- getInitialisedCallSnapshot(s2, name, c)
+		s.interpreter.snapshots <- getInitialisedCallSnapshot(s2, c, name, nil)
 	}
 
 	ret := s2.interpretStatements(f.code)
@@ -695,7 +695,7 @@ func (f *pyFunc) callNative(s *scope, name string, c *Call) pyObject {
 	}
 
 	if s.interpreter.snapshots != nil {
-		s.interpreter.snapshots <- getInitialisedCallSnapshot(s, name, c)
+		s.interpreter.snapshots <- getInitialisedCallSnapshot(s, c, name, args)
 	}
 
 	return f.nativeCode(s, args)
