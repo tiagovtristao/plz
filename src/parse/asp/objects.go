@@ -607,9 +607,9 @@ func (f *pyFunc) String() string {
 func (f *pyFunc) Call(s *scope, name string, c *Call) pyObject {
 	if f.nativeCode != nil {
 		if f.kwargs {
-			return f.callNative(s.NewScope(), c)
+			return f.callNative(s.NewScope(), name, c)
 		}
-		return f.callNative(s, c)
+		return f.callNative(s, name, c)
 	}
 	s2 := f.scope.NewPackagedScope(s.pkg)
 	s2.config = s.config
@@ -662,7 +662,7 @@ func (f *pyFunc) Call(s *scope, name string, c *Call) pyObject {
 // callNative implements the "calling convention" for functions implemented with native code.
 // For performance reasons these are done differently - rather then receiving a pointer to a scope
 // they receive their arguments as a slice, in which unpassed arguments are nil.
-func (f *pyFunc) callNative(s *scope, c *Call) pyObject {
+func (f *pyFunc) callNative(s *scope, name string, c *Call) pyObject {
 	args := make([]pyObject, len(f.args))
 	offset := 0
 	if f.self != nil {
@@ -693,6 +693,11 @@ func (f *pyFunc) callNative(s *scope, c *Call) pyObject {
 			args[i] = f.defaultArg(s, i, a)
 		}
 	}
+
+	if s.interpreter.snapshots != nil {
+		s.interpreter.snapshots <- getInitialisedCallSnapshot(s, name, c)
+	}
+
 	return f.nativeCode(s, args)
 }
 
